@@ -8,7 +8,7 @@ public class MemberServiceImpl implements MemberService {
         즉  MemberServiceImpl 는 MemberRepository(추상화) , MemoryMemberRepository(구체화) 둘 다 의존 관계에 있다(bad)
      */
 
-    private  MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
 
     public MemberServiceImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
