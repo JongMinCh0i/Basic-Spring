@@ -18,19 +18,21 @@ public class AppConfig {
     // 생성자 주입
     @Bean
     public MemberService memberService() {
-        return new MemberServiceImpl(MemberRepository());
-    }
-
-    // 생성자 주입
-    @Bean
-    public MemberRepository MemberRepository() {
-        return new MemoryMemberRepository();
+        return new MemberServiceImpl(memberRepository());
     }
 
     // 생성자 주입
     @Bean
     public OrderService orderService() {
-        return new OrderServiceImpl(new MemoryMemberRepository(), discountPolicy());
+        return new OrderServiceImpl(
+                memberRepository(),
+                discountPolicy());
+    }
+
+    // 생성자 주입
+    @Bean
+    public MemberRepository memberRepository() {
+        return new MemoryMemberRepository();
     }
 
     // 생성자 주입
