@@ -24,9 +24,8 @@ public class AppConfig {
     // 생성자 주입
     @Bean
     public OrderService orderService() {
-        return new OrderServiceImpl(
-                memberRepository(),
-                discountPolicy());
+        System.out.println("call Appconfig.orderService");
+        return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
     // 생성자 주입
