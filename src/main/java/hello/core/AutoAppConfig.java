@@ -18,7 +18,7 @@ package hello.core;
     기존 AppConfig(DI Container)를 통해서 빈등록을 처리하였으나
     @Component를 통해 해당 클래스는 자동으로 빈등록이 처리하게 되었다.
     이 경우 AppConfig를 통해 이뤄지던 의존성 주입(의존관계 명시)을 @Component 가 등록된 클래스 내부에서
-    처리하게 되는데 등록된 클래스 내부에서 @Autowired를 생성자 상위에 적을 경우 의존관계를 자동으로 주입한다.
+    처리하게 되는데 등록된 클래스 내부에서 @Autowired를 생성자라인 위에 적을 경우 의존관계를 자동으로 주입한다.
  */
 
 import hello.core.member.MemberRepository;
