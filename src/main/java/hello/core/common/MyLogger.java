@@ -25,12 +25,14 @@ public class MyLogger {
         System.out.println("[" + uuid + "]" + "[" + requestURL + "] " + message);
     }
 
+    // 생성 시점에 스프링 컨테이너에서 호출 메서드
     @PostConstruct
     public void init() {
         String uuid = UUID.randomUUID().toString();
         System.out.println("[" + uuid + "] request scope bean create:" + this);
     }
 
+    // 컨테이너에서 객체를 제거하기 전에 실행
     @PreDestroy
     public void close() {
         System.out.println("[" + uuid + "] request scope bean close:" + this);
