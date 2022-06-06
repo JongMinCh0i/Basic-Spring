@@ -1,6 +1,7 @@
 package hello.core.common;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -13,7 +14,7 @@ import java.util.UUID;
 // 빈이 소멸되는 시점에 @PreDestory 를 사용해서 종룔 메시지를 남긴다.
 // requestURL은 이 빈이 생성되는 시점에는 알 수 없으므로, 외부에서 setter로 입력 받는다.
 @Component
-@Scope(value = "request") // error Non defined
+@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class MyLogger {
 
     private String uuid;
@@ -30,7 +31,7 @@ public class MyLogger {
     // 생성 시점에 스프링 컨테이너에서 호출 메서드
     @PostConstruct
     public void init() {
-        String uuid = UUID.randomUUID().toString();
+        uuid = UUID.randomUUID().toString();
         System.out.println("[" + uuid + "] request scope bean create:" + this);
     }
 
